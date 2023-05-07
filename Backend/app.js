@@ -1,7 +1,11 @@
 const express = require('express')
-app = express();// creo la app express.
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const productsRoutes = require('./routes/product')
+
+app = express();// creo la app express.
+
+app.use(cors());
 
 app.use(bodyParser.urlencoded({extended:false}));// esto parsea a un objeto js
 app.use(bodyParser.json())

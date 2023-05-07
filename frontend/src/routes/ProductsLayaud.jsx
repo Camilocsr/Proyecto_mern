@@ -1,19 +1,15 @@
-import React,{useState} from "react";
+import React from "react";
 import Header from "../components/Header";
 import AddButton from "../components/AddButton";
-import Loading from "../components/Loading";
+import ListProducts from "../components/ListProducts";
+import NavBar from "../components/navBar";
 const ProductLayout = ()=> {
-    const [isLoading,setIsLoading] = useState(true)
     return (
     <>
+        <NavBar/>
         <Header title="Productos."/>
         <AddButton/>
-
-        {
-            isLoading
-            ? <Loading/>
-            : `Mostrar Productos.`
-        }
+        <ListProducts/>
     </>
     )
 }

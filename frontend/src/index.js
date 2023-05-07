@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import 'react-bulma-components';
 import {createBrowserRouter,RouterProvider} from "react-router-dom";
 import ProductLayout from "./routes/ProductsLayaud";
 import ErrorPage from "./error-page";
 import App from "./App";
+import Admin from "./routes/Admin";
 import "./App.css";
 
 const router = createBrowserRouter([
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/Products/Admin",
-    element: <ProductLayout />,
+    element: <Admin/>,
   }
 ]);
 
