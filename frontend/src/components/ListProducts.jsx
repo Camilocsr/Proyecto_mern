@@ -1,21 +1,7 @@
 import React,{useState,useEffect} from "react";
 import Loading from "./Loading";
-import axios from 'axios';// dependencia que sirve para hacer peticiones a urls.
+import getProducts from "../services";
 
-const baseUrl = `http://localhost:9999/v1`
-
-async function getProducts(){
-  try {
-    const response = await axios({
-      url: `${baseUrl}/products`,
-      method: 'GET'
-    })
-
-    return response
-  } catch (error) {
-    console.log(error)
-  }
-}
 
 const ListProducts = ()=>{
   const [isLoading,setIsLoading] = useState(true)
@@ -25,16 +11,29 @@ const ListProducts = ()=>{
     async function loadProducts(){
       const response = await getProducts()
       console.log(response)
-      return response
+    
+      if (response.status === 200) {
+        setProducts(response.data.products)
+      } else {
+        console.log(`care verga algo esta fallando...`)
+      }
+      setIsLoading(false)
     }
 
     loadProducts()
-  })
+
+  },[])
+
+  if (isLoading) {
+    return <Loading/>
+  }
+
+  if (!products.length) {
+    return `No tenes ni mirda mano`
+  }
   
   return (
-    isLoading
-    ? <Loading/>
-    : `Mostrar Productos.`
+    `Mostrar Productos.`
   )
 }
 
