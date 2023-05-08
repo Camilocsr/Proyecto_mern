@@ -4,9 +4,15 @@ import { Modal, Button } from "react-bootstrap";
 import AddButton from "../components/AddButton";
 import ListProducts from "../components/ListProducts";
 import NavBar from "../components/navBar";
+import Formulario from "../components/Form";
+import { saveProducts } from '../services';
 
 const ProductLayout = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleSubmit = (data)=>{
+    saveProducts(data)
+  }
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -22,12 +28,13 @@ const ProductLayout = () => {
         <Modal.Header closeButton>
           <Modal.Title>Formulario</Modal.Title>
         </Modal.Header>
-        <Modal.Body>formulario</Modal.Body>
+        <Modal.Body>
+          <Formulario handleSubmit={handleSubmit}/>
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={closeModal}>
             Cerrar
           </Button>
-          <Button variant="primary">Guardar</Button>
         </Modal.Footer>
       </Modal>
     </>

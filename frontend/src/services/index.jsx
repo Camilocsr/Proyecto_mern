@@ -14,4 +14,21 @@ async function getProducts(){
   }
 }
 
-export default getProducts;
+export async function saveProducts(productData){
+  try {
+    console.log(productData)
+    // const response = await axios({
+    //   url: `${baseUrl}/products`,
+    //   method: 'POST',
+    //   data: productData
+    // })
+
+    // return response
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export default {
+  getProducts
+};
