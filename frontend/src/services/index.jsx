@@ -17,11 +17,18 @@ async function getProducts(){
 export async function saveProducts(productData){
   try {
     console.log(productData)
-    // const response = await axios({
-    //   url: `${baseUrl}/products`,
-    //   method: 'POST',
-    //   data: productData
-    // })
+    const formData = new FormData()
+
+    formData.append('name', productData.name)
+    formData.append('priceUnitary', productData.priceUnitary)
+    formData.append('size', productData.size)
+    formData.append('description', productData.description)
+    formData.append('image', productData.image)
+    const response = await axios({
+      url: `${baseUrl}/products`,
+      method: 'POST',
+      data: formData
+    })
 
     // return response
   } catch (error) {
@@ -29,6 +36,4 @@ export async function saveProducts(productData){
   }
 }
 
-export default {
-  getProducts
-};
+export default getProducts

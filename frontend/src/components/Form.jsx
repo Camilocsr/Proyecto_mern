@@ -14,7 +14,7 @@ const Formulario = ({handleSubmit})=>{
 
   const handleChange = (event)=>{
     const {name,value} = event.target
-    console.log(name,value)
+    // console.log(name,value)
 
     setformValues({...formValues,[name]:value})
   }
@@ -22,8 +22,8 @@ const Formulario = ({handleSubmit})=>{
   const _handleSubmit = (e)=>{
     e.preventDefault()
     handleSubmit({...formValues,image:inputFileRef.current.files[0]})
-    console.log(formValues)
-    console.log(inputFileRef.current.files)
+    // console.log(formValues)
+    // console.log(inputFileRef.current.files)
   }
 
   return (
@@ -32,7 +32,7 @@ const Formulario = ({handleSubmit})=>{
         <Form.Label>Nombre</Form.Label>
         <Form.Control name="name" value={formValues.name} onChange={handleChange} type="text" placeholder="Chaqueta" />
         <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
+          Tipo de producto o nombre referente a ese producto.
         </Form.Text>
       </Form.Group>
 

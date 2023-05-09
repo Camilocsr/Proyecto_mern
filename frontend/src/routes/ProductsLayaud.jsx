@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Header from "../components/Header";
 import { Modal, Button } from "react-bootstrap";
 import AddButton from "../components/AddButton";
@@ -6,27 +6,59 @@ import ListProducts from "../components/ListProducts";
 import NavBar from "../components/navBar";
 import Formulario from "../components/Form";
 import { saveProducts } from '../services';
+import getProducts from "../services";
+import Loading from "../components/Loading";
 
 const ProductLayout = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading,setIsLoading] = useState(true)
+  const [products,setProducts] = useState([])
 
-  const handleSubmit = (data)=>{
-    saveProducts(data)
+  async function loadProducts(){
+    const response = await getProducts()
+    // console.log(response)
+  
+    if (response.status === 200) {
+      setProducts(response.data.products)
+    } else {
+      // console.log(`care verga algo esta fallando...`)
+    }
+    setIsLoading(false)
+  }
+
+  useEffect(()=>{
+
+
+    loadProducts()
+
+  },[])
+
+  const handleSubmit = async (data)=>{
+    await saveProducts(data)
+    loadProducts()
+    setIsModalOpen(false)
   }
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
+  if (!products.length) {
+    return <Loading/>
+  }
+
   return (
     <>
       <NavBar />
       <Header title="Productos." />
       <AddButton onClick={() => setIsModalOpen(true)} />
-      <ListProducts />
+      {
+        isLoading && <Loading/>
+      }
+      <ListProducts products={products}/>
       <Modal show={isModalOpen} onHide={closeModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Formulario</Modal.Title>
+          <Modal.Title>Ingreso de Productos...</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Formulario handleSubmit={handleSubmit}/>
