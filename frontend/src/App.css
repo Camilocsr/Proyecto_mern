@@ -118,3 +118,18 @@
   justify-content: center;
   align-items: center;
 }
+
+.cont-redes {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.icon-redes {
+  margin: 5px;
+}
+
+.icon-redes:hover {
+  color: blue;
+  cursor: pointer;
+}

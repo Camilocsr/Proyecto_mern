@@ -8,6 +8,7 @@ import Formulario from "../components/Form";
 import { saveProducts } from '../services';
 import getProducts from "../services";
 import Loading from "../components/Loading";
+import Error404 from "../components/Error404";
 
 const ProductLayout = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -54,7 +55,7 @@ const ProductLayout = () => {
 
       {
         !products.length
-        ? <Loading/>
+        ? <Error404/>
         : <ListProducts products={products}/>
       }
       
