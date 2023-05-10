@@ -1,4 +1,5 @@
 import { Card, Col, Row } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import { FaWhatsapp } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
@@ -9,7 +10,7 @@ const ListProducts = ({products}) => { // esta es la funcion la cual muestra los
   return (
     <Row className='centrar-products'>
       {reversedProducts.map(({description, name, size, _id, unitaryPrice, imgUrl}) => (
-        <Col className='cont-sep' sm={3} key={_id}>
+        <Col className='cont-sep col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3' sm={3} key={_id}>
           <Card className='Card'>
             <Card.Img className='Card.Img' style={{height: '300px'}} variant='top' src={imgUrl} />
             <Card.Body>
@@ -31,12 +32,18 @@ const ListProducts = ({products}) => { // esta es la funcion la cual muestra los
               <div className='icon-redes'>
                 <SiGmail/>
               </div>
-            </div></Card.Footer>
+            </div>
+            <p className='parrafo-products'></p>
+            </Card.Footer>
           </Card>
         </Col>
       ))}
     </Row>
   )
+}
+
+ListProducts.prototype = {
+  products: PropTypes.array.isRequired
 }
 
 export default ListProducts;
