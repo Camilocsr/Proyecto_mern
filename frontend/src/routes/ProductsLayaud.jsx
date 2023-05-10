@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import { useState,useEffect } from "react";
 import Header from "../components/Header";
 import { Modal, Button } from "react-bootstrap";
 import AddButton from "../components/AddButton";
@@ -43,10 +43,6 @@ const ProductLayout = () => {
     setIsModalOpen(false);
   };
 
-  if (!products.length) {
-    return <Loading/>
-  }
-
   return (
     <>
       <NavBar />
@@ -55,7 +51,13 @@ const ProductLayout = () => {
       {
         isLoading && <Loading/>
       }
-      <ListProducts products={products}/>
+
+      {
+        !products.length
+        ? <Loading/>
+        : <ListProducts products={products}/>
+      }
+      
       <Modal show={isModalOpen} onHide={closeModal}>
         <Modal.Header closeButton>
           <Modal.Title>Ingreso de Productos...</Modal.Title>
