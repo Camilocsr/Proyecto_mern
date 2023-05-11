@@ -1,5 +1,5 @@
 const Product = require('../models/Product');
-const {host,port} = require('../config')
+const {host,port} = require('../config');
 
 async function addProduct(req,res){
   try {

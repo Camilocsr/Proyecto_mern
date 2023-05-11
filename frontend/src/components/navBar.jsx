@@ -7,21 +7,24 @@ const NavBar = () =>{
     <>
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
-        <Link className="anmpijam navbar-brand" to="/" href="index.html"><img src={require('../images/logo.png')} width="90" alt="Logo" /></Link>
+        <Link className="anmpijam navbar-brand" to="/"><img src={require('../images/logo.png')} width="90" alt="Logo" /></Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="color-nombre-menu nav-link active" aria-current="page" to="/" href="index.html">Inicio</Link>
+              <Link className="color-nombre-menu nav-link active" aria-current="page" to="/">Inicio</Link>
             </li>
             <li className="nav-item">
               <Link className="color-nombre-menu nav-link active" to="/Products" aria-current="page" >Productos</Link>
             </li>
             <li className="nav-item">
-              <Link className="color-nombre-menu nav-link active" to="/Products" aria-current="page" href="#nosotros">Nosotros.</Link>
+              <Link className="color-nombre-menu nav-link active" to="/Products/Admin" aria-current="page" >Administracion</Link>
             </li>
+            {/* <li className="nav-item">
+              <Link className="color-nombre-menu nav-link active" aria-current="page" href="#nosotros">Nosotros.</Link>
+            </li> */}
           </ul>
         </div>
       </div>
