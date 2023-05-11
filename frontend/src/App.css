@@ -3,6 +3,68 @@
   padding: 0;
   margin: 0;
 }
+/*css navBar*/
+h1, h2, h3{
+  font-family: 'Rubik Moonrocks', cursive;
+}
+
+p{
+  font-family: 'Amatic SC', cursive;
+}
+
+#document{
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.logo{
+  font-size: 50px;
+}
+
+.boton{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 100%;
+  height: 80px;
+  color: white;
+  top: 30px;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: .3s ease all;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  background-image: url(./images/whatsapp.jpg);
+}
+
+.boton.uno::after{
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: rgb(26, 175, 26);
+  position: absolute;
+  z-index: 1;
+  top: -80px;
+  left: 0;
+  transition: .3s ease-in-out all;
+
+}
+
+.boton span{
+  position: relative;
+  z-index: 2;
+  transition: .3s ease all;
+}
+
+.sobrenosotrosp{
+  background-color: aliceblue;
+}
 
 .cont-header {
   display: flex;
@@ -133,3 +195,6 @@
   color: blue;
   cursor: pointer;
 }
+
+/*F o t t e r css*/
+

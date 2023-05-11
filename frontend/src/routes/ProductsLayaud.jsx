@@ -9,6 +9,7 @@ import { saveProducts } from '../services';
 import getProducts from "../services";
 import Loading from "../components/Loading";
 import Error404 from "../components/Error404";
+import Foter from "../components/Foter";
 
 const ProductLayout = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -72,6 +73,7 @@ const ProductLayout = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+      <Foter/>
     </>
   );
 };

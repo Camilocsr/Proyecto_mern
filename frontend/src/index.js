@@ -6,6 +6,7 @@ import ErrorPage from "./error-page";
 import App from "./App";
 import Admin from "./routes/Admin";
 import "./App.css";
+import "./Hovers.css"
 
 const router = createBrowserRouter([
   {
