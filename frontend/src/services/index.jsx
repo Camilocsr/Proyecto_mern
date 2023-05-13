@@ -36,4 +36,4 @@ export async function saveProducts(productData){
   }
 }
 
-export default getProducts
+export default getProducts;
