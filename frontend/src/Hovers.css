@@ -38,3 +38,7 @@
     animation: bounceIn;
     animation-duration: 1s;
 }
+
+.btn-admin:hover {
+    background-color: darkmagenta;
+  }

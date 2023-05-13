@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import {createBrowserRouter,RouterProvider} from "react-router-dom";
-import ProductLayout from "./routes/ProductsLayaud";
 import ErrorPage from "./error-page";
 import App from "./App";
 import Admin from "./routes/Admin";
 import "./App.css";
 import "./Hovers.css"
+import LoginForm from "./components/LoginAdmin";
 
 const router = createBrowserRouter([
   {
@@ -15,12 +15,12 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/Products/Admin",
-    element: <ProductLayout />,
-  },
-  {
     path: "/Products",
     element: <Admin/>,
+  },
+  {
+    path: "/Products/Admin",
+    element: <LoginForm/>,
   }
 ]);
 
