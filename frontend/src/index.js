@@ -10,7 +10,7 @@ import LoginForm from "./components/LoginAdmin";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/Proyecto_mern",
     element: <App/>,
     errorElement: <ErrorPage />,
   },
