@@ -25,7 +25,11 @@ const LoginForm = () => {
         setError(response.data.message); // Mostrar el mensaje de error del backend
       }
     } catch (error) {
-      setError('Error al procesar la solicitud de autenticación');
+      setError(
+        <div className='cont-parrafo-credenciales'>
+          <p>Error de credenciales, por favor verifica tus credenciales para poder ingresar.</p>
+        </div>
+      );
     }
 
     setUsername('');
@@ -43,6 +47,7 @@ const LoginForm = () => {
   }
 
   return (
+    <>
     <div className='cont-form-admin'>
       <form className='form-admin' onSubmit={handleSubmit}>
         <div className='input-name-admin'>
@@ -71,6 +76,7 @@ const LoginForm = () => {
         {error && <div className='error-message'>{error}</div>}
       </form>
     </div>
+    </>
   );
 };
 

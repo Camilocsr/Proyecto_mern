@@ -242,3 +242,16 @@ p{
   font-weight: bold;
   cursor: pointer;
 }
+
+.cont-parrafo-credenciales {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  color: white;
+}
+
+.cont-redes {
+  border: 2px solid white;
+}
