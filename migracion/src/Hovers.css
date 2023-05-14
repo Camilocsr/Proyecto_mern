@@ -41,4 +41,9 @@
 
 .btn-admin:hover {
     background-color: darkmagenta;
+}
+
+.btn-eliminar-products:hover {
+    background: linear-gradient(to right, #ee4266, #ff6b6b);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   }

@@ -65,7 +65,25 @@ async function getProducts(req, res) {// trae los datos de la base de datos y ta
   }
 }
 
+async function deleteProducts(req, res) {
+  try {
+    const productId = req.params.id;
+
+    // Lógica para eliminar el producto de la base de datos
+    const deletedProduct = await Product.findByIdAndDelete(productId);
+
+    if (!deletedProduct) {
+      return res.status(404).send({ message: 'Producto no encontrado' });
+    }
+
+    res.status(200).send({ message: 'Producto eliminado exitosamente' });
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+}
+
 module.exports = {
   addProduct,
-  getProducts
+  getProducts,
+  deleteProducts
 }

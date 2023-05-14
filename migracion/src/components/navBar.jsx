@@ -19,10 +19,10 @@ const NavBar = () =>{
               <Link className="color-nombre-menu nav-link active" aria-current="page" to="/Proyecto_mern">Inicio</Link>
             </li>
             <li className="nav-item">
-              <Link className="color-nombre-menu nav-link active" to="/Products" aria-current="page" >Productos</Link>
+              <Link className="color-nombre-menu nav-link active" to="/Proyecto_mern/Products" aria-current="page" >Productos</Link>
             </li>
             <li className="nav-item">
-              <Link className="color-nombre-menu nav-link active" to="/Products/Admin" aria-current="page" >Administracion</Link>
+              <Link className="color-nombre-menu nav-link active" to="/Proyecto_mern/Products/Admin" aria-current="page" >Administracion</Link>
             </li>
             {/* <li className="nav-item">
               <Link className="color-nombre-menu nav-link active" aria-current="page" href="#nosotros">Nosotros.</Link>

@@ -3,7 +3,8 @@ import { useState,useEffect } from "react";
 import Header from "../components/Header";
 import { Modal, Button } from "react-bootstrap";
 import AddButton from "../components/AddButton";
-import ListProducts from "../components/ListProducts";
+// import ListProducts from "../components/ListProducts";
+import DeleteProducts from "../components/DeleteProducts";
 import NavBar from "../components/navBar";
 import Formulario from "../components/Form";
 import { saveProducts } from '../services';
@@ -58,7 +59,7 @@ const ProductLayout = () => {
       {
         !products.length
         ? <Error404/>
-        : <ListProducts products={products}/>
+        : <DeleteProducts products={products}/>
       }
       
       <Modal show={isModalOpen} onHide={closeModal}>

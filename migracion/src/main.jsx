@@ -15,11 +15,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/Products",
+    path: "/Proyecto_mern/Products",
     element: <Admin/>,
   },
   {
-    path: "/Products/Admin",
+    path: "/Proyecto_mern/Products/Admin",
     element: <LoginForm/>,
   }
 ]);
