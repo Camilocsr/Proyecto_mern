@@ -1,0 +1,257 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/*css navBar*/
+h1, h2, h3{
+  font-family: 'Rubik Moonrocks', cursive;
+}
+
+p{
+  font-family: 'Amatic SC', cursive;
+}
+
+#document{
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.logo{
+  font-size: 50px;
+}
+
+.boton{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 100%;
+  height: 80px;
+  color: white;
+  top: 30px;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: .3s ease all;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  background-image: url(./assets/images/whatsapp.jpg);
+}
+
+.boton.uno::after{
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: rgb(26, 175, 26);
+  position: absolute;
+  z-index: 1;
+  top: -80px;
+  left: 0;
+  transition: .3s ease-in-out all;
+
+}
+
+.boton span{
+  position: relative;
+  z-index: 2;
+  transition: .3s ease all;
+}
+
+.sobrenosotrosp{
+  background-color: aliceblue;
+}
+
+.cont-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: blue;
+  height: 120px;
+}
+
+.cont-add {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 100%;
+}
+
+.btn-add {
+  width: 50%;
+  color: white;
+  background-color: black;
+  border-radius: 10px;
+  grid-row: 1;
+  grid-column: 2;
+  justify-content: end;
+  align-self: start;
+}
+
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 0 10px;
+  animation: spin 1s linear infinite,
+             jump 1s ease-in-out infinite alternate,
+             color-change 3s ease-in-out infinite;
+  background-color: darkmagenta;
+}
+
+.circle:nth-child(2) {
+  animation-delay: 0.2s, 0.35s, 0s;
+}
+
+.circle:nth-child(3) {
+  animation-delay: 0.4s, 0.45s, 0s;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes jump {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes color-change {
+  0% {
+    background-color: darkmagenta;
+  }
+  33% {
+    background-color: darkblue;
+  }
+  66% {
+    background-color: blue;
+  }
+  100% {
+    background-color: darkmagenta;
+  }
+}
+
+.cont-204 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: black;
+}
+
+.cont-204 span {
+  color: darkblue;
+}
+
+.cont-sep {
+  padding: 20px;
+  border: solid 5px whitesmoke;
+  margin: 10px;
+}
+
+.Card {
+  background-color: whitesmoke;
+}
+
+.centrar-products {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cont-redes {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.icon-redes {
+  margin: 5px;
+}
+
+.icon-redes:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+/*Formulario a d m i n*/
+
+.cont-form-admin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-admin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #000;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.input-name-admin {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.label-pasword-admin {
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.input-admin {
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.btn-admin {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #d30bd3dc;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cont-parrafo-credenciales {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  color: white;
+}
+
+.cont-redes {
+  border: 2px solid white;
+}
