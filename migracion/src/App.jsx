@@ -2,8 +2,9 @@ import React from 'react';
 import './App.css';
 import NavBar from './components/navBar';
 import Foter from './components/Foter';
-import ofori from './assets/images/ofori.jpg';
-import dos from './assets/images/dos.jpg';
+import ofori from './images/ofori.jpg';
+import dos from './images/dos.jpg';
+
 
 function App() {
   return (
