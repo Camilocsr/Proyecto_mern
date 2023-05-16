@@ -84,9 +84,23 @@ async function deleteProducts(req, res) {
 
 async function editionProducts(req, res) {
   try {
-    // Lógica para editar el producto en la base de datos.
     const productId = req.params.id;
-    const updatedProduct = await Product.findByIdAndUpdate(productId, req.body);
+
+    // Obtén los datos del producto a actualizar
+    const productData = req.body;
+    const { file } = req;
+
+    // Verifica si se proporcionó una nueva imagen
+    if (file) {
+      // Construye la URL de la imagen
+      const imageUrl = `${host}:${port}/public/${file.filename}`;
+
+      // Actualiza la URL de la imagen en el producto
+      productData.imgUrl = imageUrl;
+    }
+
+    // Actualiza el producto en la base de datos
+    const updatedProduct = await Product.findByIdAndUpdate(productId, productData);
 
     if (!updatedProduct) {
       return res.status(404).send({ message: 'Producto no encontrado.' });

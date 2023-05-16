@@ -6,6 +6,6 @@ const api = express.Router();
 api.post('/products',upload.single('image'), addProduct);
 api.get('/products',getProducts);
 api.delete('/products/delete/:id', deleteProducts);
-api.patch('/products/edition/:id',editionProducts);
+api.patch('/products/edition/:id',upload.single('image'),editionProducts);
 
 module.exports = api;
