@@ -82,8 +82,25 @@ async function deleteProducts(req, res) {
   }
 }
 
+async function editionProducts(req, res) {
+  try {
+    // Lógica para editar el producto en la base de datos.
+    const productId = req.params.id;
+    const updatedProduct = await Product.findByIdAndUpdate(productId, req.body);
+
+    if (!updatedProduct) {
+      return res.status(404).send({ message: 'Producto no encontrado.' });
+    }
+
+    res.status(200).send({ message: `Producto con el ID: ${productId} fue editado correctamente.` });
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+}
+
 module.exports = {
   addProduct,
   getProducts,
-  deleteProducts
+  deleteProducts,
+  editionProducts
 }

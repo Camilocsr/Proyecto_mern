@@ -2,8 +2,22 @@ import React from "react";
 import ListProducts from "./ListProducts";
 import axios from "axios";
 import { Card, Col, Row } from 'react-bootstrap';
+import ButtonWithDiv from "./EditarProduts";
 
 class DeleteProducts extends ListProducts {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      showDiv: false
+    };
+  }
+
+  handleButtonClick = () => {
+    this.setState({ showDiv: true });
+  };
+
+
   handleDeleteProduct(id) {
     axios.delete(`http://localhost:9999/v1/products/delete/${id}`)
       .then(response => {
@@ -17,8 +31,22 @@ class DeleteProducts extends ListProducts {
       });
   }
 
+  editionProducts(id) {
+    axios.get(`http://localhost:9999/v1/products/${id}`)
+      .then(response => {
+        const productData = response.data; // Datos del producto obtenidos de la respuesta
+        mostrarFormulario(productData, id); // Pasar también el ID del producto al formulario
+      })
+      .catch(error => {
+        console.error(error.response.data.message);
+        // Manejar el error de alguna manera adecuada
+      });
+  }
+  
+
   render() {
     const { products } = this.props;
+    const { showDiv } = this.state;
 
     return (
       <Row className="centrar-products">
@@ -32,8 +60,12 @@ class DeleteProducts extends ListProducts {
             <Card.Text>valore: {unitaryPrice}</Card.Text>
             <Card.Text>Descripcion: {description}</Card.Text>
           </Card.Body>
-          <Card.Footer style={{background: 'black'}}>
+          <Card.Footer style={{background: 'black',
+                                display:'flex',
+                                justifyContent:'center',
+                                alignItems:'center'}}>
             <button className="btn-eliminar-products" onClick={() => this.handleDeleteProduct(_id)}>Eliminar</button>
+            <ButtonWithDiv></ButtonWithDiv>
           </Card.Footer>
           </Card>
           </Col>

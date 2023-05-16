@@ -31,20 +31,20 @@ const Formulario = ({handleSubmit})=>{
   <Form  onSubmit={_handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Nombre</Form.Label>
-        <Form.Control name="name" value={formValues.name} onChange={handleChange} type="text" placeholder="Chaqueta" />
+        <Form.Control name="name" value={formValues.name} onChange={handleChange} type="text" />
         <Form.Text className="text-muted">
           Tipo de producto o nombre referente a ese producto.
         </Form.Text>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>size</Form.Label>
-        <Form.Control name="size"value={formValues.size} onChange={handleChange} type="number" placeholder="15" />
+        <Form.Label>cantidad</Form.Label>
+        <Form.Control name="size"value={formValues.size} onChange={handleChange} type="number"/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Valor por unidad.</Form.Label>
-        <Form.Control name="priceUnitary"value={formValues.priceUnitary} onChange={handleChange} type="number" placeholder="200000" />
+        <Form.Control name="priceUnitary"value={formValues.priceUnitary} onChange={handleChange} type="number" placeholder="sin putos"/>
       </Form.Group>
 
       <Form.Group controlId="formProduct">

@@ -27,9 +27,14 @@ const LoginForm = () => {
       }
     } catch (error) {
       setError(
+        <>
         <div className='cont-parrafo-credenciales'>
           <p>Error de credenciales, por favor verifica tus credenciales para poder ingresar.</p>
         </div>
+        <div className='cont-parrafo-credenciales'>
+          <p>Solo tienes tres intentos para ingresar a la sona de administracion.</p>
+        </div>
+        </>
       );
     }
 
