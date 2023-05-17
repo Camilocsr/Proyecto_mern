@@ -82,35 +82,46 @@ async function deleteProducts(req, res) {
   }
 }
 
-async function editionProducts(req, res) {
+const editionProducts = async (req, res) => {
   try {
-    const productId = req.params.id;
+    const { id } = req.params;
 
-    // Obtén los datos del producto a actualizar
-    const productData = req.body;
-    const { file } = req;
+    const {
+      name,
+      size,
+      unitaryPrice,
+      description
+    } = req.body;
 
-    // Verifica si se proporcionó una nueva imagen
-    if (file) {
-      // Construye la URL de la imagen
-      const imageUrl = `${host}:${port}/public/${file.filename}`;
+    const productData = {};
 
-      // Actualiza la URL de la imagen en el producto
-      productData.imgUrl = imageUrl;
+    // Verificar y agregar los campos que se enviaron en la solicitud
+    if (name) {
+      productData.name = name;
+    }
+    if (size) {
+      productData.size = size;
+    }
+    if (unitaryPrice) {
+      productData.unitaryPrice = unitaryPrice;
+    }
+    if (description) {
+      productData.description = description;
+    }
+    if (req.file) {
+      productData.imgUrl = `${host}:${port}/public/${req.file.filename}`;
     }
 
-    // Actualiza el producto en la base de datos
-    const updatedProduct = await Product.findByIdAndUpdate(productId, productData);
-
-    if (!updatedProduct) {
-      return res.status(404).send({ message: 'Producto no encontrado.' });
+    const productStored = await Product.findByIdAndUpdate(id, productData, { new: true });
+    if (!productStored) {
+      return res.status(404).json({ message: "Product not found" });
     }
 
-    res.status(200).send({ message: `Producto con el ID: ${productId} fue editado correctamente.` });
+    res.status(200).json({ productStored });
   } catch (error) {
-    res.status(500).send({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
-}
+};
 
 module.exports = {
   addProduct,

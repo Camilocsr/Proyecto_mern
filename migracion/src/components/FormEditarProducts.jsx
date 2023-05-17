@@ -13,16 +13,31 @@ const ContEditar = ({ productId }) => {
   });
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+    const { name, value, files } = e.target;
+    if (name === "imgUrl") {
+      setFormData(prevState => ({
+        ...prevState,
+        imgUrl: files[0]
+      }));
+    } else {
+      setFormData(prevState => ({
+        ...prevState,
+        [name]: value
+      }));
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.patch(`http://localhost:9999/v1/products/edition/${productId}`, formData)
+  
+    const formDataToSend = new FormData();
+    formDataToSend.append("name", formData.name);
+    formDataToSend.append("size", formData.size);
+    formDataToSend.append("unitaryPrice", formData.unitaryPrice);
+    formDataToSend.append("description", formData.description);
+    formDataToSend.append("image", formData.imgUrl); // Adjuntar la imagen al campo 'image'
+  
+    axios.post(`http://localhost:9999/v1/products/edition/${productId}`, formDataToSend)
       .then(response => {
         console.log(response.data);
         // Realizar cualquier otra acción después de editar el producto
