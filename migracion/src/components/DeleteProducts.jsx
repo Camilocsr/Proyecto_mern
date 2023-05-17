@@ -19,9 +19,10 @@ class DeleteProducts extends ListProducts {
   handleDeleteProduct(id) {
     axios.delete(`http://localhost:9999/v1/products/delete/${id}`)
       .then(response => {
-        console.log(response.data.message); // Mensaje de éxito o error del servidor
-        // Realiza cualquier otra acción que necesites después de eliminar el producto
-        // Por ejemplo, podrías actualizar la lista de productos llamando a una función para cargar los productos nuevamente
+        console.log(response.data.message);
+        <div>
+          <P>Producto eliminado exitosamente.</P>
+        </div>
         this.loadProducts();
       })
       .catch(error => {

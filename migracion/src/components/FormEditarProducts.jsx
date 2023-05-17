@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
 
-const ContEditar = ({ productId }) => {
+const ContEditar = ({ productId, onUpdate }) => {
   const [formData, setFormData] = useState({
     name: '',
     size: '',
@@ -27,7 +27,7 @@ const ContEditar = ({ productId }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
   
     const formDataToSend = new FormData();
@@ -35,17 +35,15 @@ const ContEditar = ({ productId }) => {
     formDataToSend.append("size", formData.size);
     formDataToSend.append("unitaryPrice", formData.unitaryPrice);
     formDataToSend.append("description", formData.description);
-    formDataToSend.append("image", formData.imgUrl); // Adjuntar la imagen al campo 'image'
+    formDataToSend.append("image", formData.imgUrl);
   
-    axios.post(`http://localhost:9999/v1/products/edition/${productId}`, formDataToSend)
-      .then(response => {
-        console.log(response.data);
-        // Realizar cualquier otra acción después de editar el producto
-      })
-      .catch(error => {
-        console.error(error);
-        // Manejar el error de alguna manera adecuada
-      });
+    try {
+      const response = await axios.post(`http://localhost:9999/v1/products/edition/${productId}`, formDataToSend);
+      console.log(response.data);
+      onUpdate(response.data.productStored);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

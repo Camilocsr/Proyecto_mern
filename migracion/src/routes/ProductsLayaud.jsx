@@ -3,7 +3,6 @@ import { useState,useEffect } from "react";
 import Header from "../components/Header";
 import { Modal, Button } from "react-bootstrap";
 import AddButton from "../components/AddButton";
-// import ListProducts from "../components/ListProducts";
 import DeleteProducts from "../components/DeleteProducts";
 import NavBar from "../components/navBar";
 import Formulario from "../components/Form";
@@ -25,16 +24,16 @@ const ProductLayout = () => {
     if (response.status === 200) {
       setProducts(response.data.products)
     } else {
-      // console.log(`care verga algo esta fallando...`)
     }
     setIsLoading(false)
   }
+  
+  useEffect(()=>{
+    loadProducts();
+  },[products])
 
   useEffect(()=>{
-
-
     loadProducts()
-
   },[])
 
   const handleSubmit = async (data)=>{
