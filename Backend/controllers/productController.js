@@ -7,7 +7,8 @@ async function addProduct(req,res){
       name,
       size,
       unitaryPrice,
-      description
+      description,
+      categoria
     } = req.body 
 
     const product = ({
@@ -15,7 +16,8 @@ async function addProduct(req,res){
       size,
       unitaryPrice,
       description,
-      imgUrl: req.file ? `${host}:${port}/public/${req.file.filename}` : null // si el campo de img es bacio ps se pone null
+      categoria,
+      imgUrl: req.file ? `${host}:${port}/public/${req.file.filename}` : null, // si el campo de img es bacio ps se pone null
     }
     )
 
@@ -90,6 +92,7 @@ const editionProducts = async (req, res) => {
       name,
       size,
       unitaryPrice,
+      categoria,
       description
     } = req.body;
 
@@ -107,6 +110,9 @@ const editionProducts = async (req, res) => {
     }
     if (description) {
       productData.description = description;
+    }
+    if (categoria) {
+      productData.categoria = categoria;
     }
     if (req.file) {
       productData.imgUrl = `${host}:${port}/public/${req.file.filename}`;

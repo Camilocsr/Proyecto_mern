@@ -1,0 +1,11 @@
+POST http://localhost:9999/v1/products
+Content-Type: application/json
+
+{
+    "name":"chaqueta de la marca ofori...",
+    "size":45,
+    "unitaryPrice":5,
+    "categoria":"niños",
+    "imgUrl":"http://localhost:9999/v1/products/images.png",
+    "description":"esta es una chaqueta la cual es impermeable de color azul claro.."
+}

@@ -36,17 +36,15 @@ class DeleteProducts extends ListProducts {
     console.log(products._id)
     return (
       <Row className="centrar-products">
-        {products.map(({ _id, name, description, imgUrl, unitaryPrice, size }) => (
+        {products.map(({ _id, name, description, imgUrl, unitaryPrice, size,categoria }) => (
           <Col className="cont-sep col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3" sm={3} key={_id}>
             <Card className="Card">
               <Card.Img className="Card.Img" variant="top" src={imgUrl} style={{ height: '300px' }} alt={name} />
               <Card.Body>
                 <Card.Title>Nombre: {name}</Card.Title>
                 <Card.Text>Cantidad: {size}</Card.Text>
-                {
-                  console.log(_id)
-                }
                 <Card.Text>Valor: {unitaryPrice}</Card.Text>
+                <Card.Text>Categoria: {categoria}</Card.Text>
                 <Card.Text>Descripción: {description}</Card.Text>
               </Card.Body>
               <Card.Footer style={{ background: 'black', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

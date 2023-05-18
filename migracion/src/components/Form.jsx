@@ -2,12 +2,14 @@ import React from 'react';
 import {useState,useRef} from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const Formulario = ({handleSubmit})=>{
   const [formValues,setformValues] = useState({
     name:'',
     priceUnitary:'',
     size:'',
+    categoria:'',
     description:''
   })
 
@@ -19,6 +21,10 @@ const Formulario = ({handleSubmit})=>{
 
     setformValues({...formValues,[name]:value})
   }
+
+  const handleCategoriaSelect = (categoria) => {
+    setformValues({ ...formValues, categoria });
+  };
 
   const _handleSubmit = (e)=>{
     e.preventDefault()
@@ -45,6 +51,19 @@ const Formulario = ({handleSubmit})=>{
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Valor por unidad.</Form.Label>
         <Form.Control name="priceUnitary"value={formValues.priceUnitary} onChange={handleChange} type="number" placeholder="sin putos"/>
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Categoria.</Form.Label>
+        <Dropdown>
+          <Dropdown.Toggle variant="secondary">{formValues.categoria}</Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item onClick={() => handleCategoriaSelect('niños')}>Niños</Dropdown.Item>
+            <Dropdown.Item onClick={() => handleCategoriaSelect('niñas')}>Niñas</Dropdown.Item>
+            <Dropdown.Item onClick={() => handleCategoriaSelect('hombres')}>Hombres</Dropdown.Item>
+            <Dropdown.Item onClick={() => handleCategoriaSelect('mujeres')}>Mujeres</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       </Form.Group>
 
       <Form.Group controlId="formProduct">

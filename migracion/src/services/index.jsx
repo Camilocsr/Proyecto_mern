@@ -23,6 +23,7 @@ export async function saveProducts(productData){
     formData.append('unitaryPrice', productData.priceUnitary)
     formData.append('size', productData.size)
     formData.append('description', productData.description)
+    formData.append('categoria',productData.categoria)
     formData.append('image', productData.image)
     const response = await axios({
       url: `${baseUrl}/products`,

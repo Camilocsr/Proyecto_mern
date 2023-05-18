@@ -14,6 +14,10 @@ const ProductSchema = Schema({//lo que va a requerir nuestra base de datos.
     type:Number,
     required:true
   },//precio por unidad
+  categoria:{
+    type:String,
+    required:true
+  },
   imgUrl:{
     type:String,
     required:true

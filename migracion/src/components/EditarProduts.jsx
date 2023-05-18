@@ -19,7 +19,7 @@ const ButtonWithDiv = ({ productId }) => {
       {showDiv && (
         <ContEditar productId={productId} onUpdate={handleProductUpdate} />
       )}
-      {productData && (
+      {/* {productData && (
         <div>
           <p>Nombre: {productData.name}</p>
           <p>Cantidad: {productData.size}</p>
@@ -27,7 +27,7 @@ const ButtonWithDiv = ({ productId }) => {
           <p>Description: {productData.description}</p>
           <p>img: {productData.imgUrl}</p>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
