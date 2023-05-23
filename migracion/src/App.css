@@ -285,3 +285,17 @@ p{
     transform: scale(1);
   }
 }
+
+
+/*Menu flotante de products....*/
+.position {
+  position: sticky;
+  top: 0;
+}
+
+.const-menu-flo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

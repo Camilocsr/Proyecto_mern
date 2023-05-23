@@ -5,14 +5,31 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
 import { SiGmail } from 'react-icons/si';
+import MenuFlotante from './MenuFlotante';
 
 class ListProducts extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedCategory: null,
+    }
+  }
+
+  onSelectCategory = (category) => {
+    this.setState({ selectedCategory: category });
+  };
+
   render() {
     const { products } = this.props;
-    const reversedProducts = products.slice().reverse();
+    const reversedProducts = products
+      .filter((product) => this.state.selectedCategory ? product.categoria === this.state.selectedCategory : true)
+      .slice()
+      .reverse();
 
     return (
+      <>
       <Row className="centrar-products">
+      <MenuFlotante onSelectCategory={this.onSelectCategory}/>
         {reversedProducts.map(({ description, name, size, _id, unitaryPrice, imgUrl,categoria }) => (
           <Col className="cont-sep col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3" sm={3} key={_id}>
             <Card className="Card">
@@ -45,6 +62,7 @@ class ListProducts extends Component {
           </Col>
         ))}
       </Row>
+      </>
     );
   }
 }

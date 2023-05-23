@@ -62,6 +62,7 @@ const Formulario = ({handleSubmit})=>{
             <Dropdown.Item onClick={() => handleCategoriaSelect('niñas')}>Niñas</Dropdown.Item>
             <Dropdown.Item onClick={() => handleCategoriaSelect('hombres')}>Hombres</Dropdown.Item>
             <Dropdown.Item onClick={() => handleCategoriaSelect('mujeres')}>Mujeres</Dropdown.Item>
+            <Dropdown.Item onClick={() => handleCategoriaSelect('otros')}>Otros</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </Form.Group>

@@ -7,6 +7,8 @@ import Admin from "./routes/Admin";
 import "./App.css";
 import "./Hovers.css"
 import LoginForm from "./components/LoginAdmin";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 
 const router = createBrowserRouter([
   {
