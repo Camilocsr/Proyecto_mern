@@ -11,8 +11,12 @@ import getProducts from "../services";
 import Loading from "../components/Loading";
 import Error404 from "../components/Error404";
 import Foter from "../components/Foter";
+import AddButtonAdmins from "../components/AddburttonAdmins";
+import FormAddAdmins from "../components/FormAdmins";
+import { saveAdmins } from "../services/Admins";
 
 const ProductLayout = () => {
+  const [isModalOpenAdmins, setIsModalOpenAdmins] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading,setIsLoading] = useState(true)
   const [products,setProducts] = useState([])
@@ -28,9 +32,9 @@ const ProductLayout = () => {
     setIsLoading(false)
   }
   
-  useEffect(()=>{
-    loadProducts();
-  },[products])
+  // useEffect(()=>{
+  //   loadProducts();
+  // },[products])
 
   useEffect(()=>{
     loadProducts()
@@ -38,19 +42,30 @@ const ProductLayout = () => {
 
   const handleSubmit = async (data)=>{
     await saveProducts(data)
+    if (data.nameAdmin && data.paswordAdmin) {
+      await saveAdmins(data);
+    }
     loadProducts()
     setIsModalOpen(false)
+    setIsModalOpenAdmins(false)
   }
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
+  const closeModalAdmins = () => {
+    setIsModalOpenAdmins(false);
+  };
+
   return (
     <>
       <NavBar />
       <Header title="Productos." />
-      <AddButton onClick={() => setIsModalOpen(true)} />
+      <div className="const-butoons">
+        <AddButton onClick={() => setIsModalOpen(true)} />
+        <AddButtonAdmins onClick={() => setIsModalOpenAdmins(true)}/>
+      </div>
       {
         isLoading && <Loading/>
       }
@@ -70,6 +85,20 @@ const ProductLayout = () => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={closeModal}>
+            Cerrar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal show={isModalOpenAdmins} onHide={closeModalAdmins}>
+        <Modal.Header closeButton>
+          <Modal.Title>Ingreso de Admins...</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <FormAddAdmins handleSubmit={handleSubmit}/>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={closeModalAdmins}>
             Cerrar
           </Button>
         </Modal.Footer>
