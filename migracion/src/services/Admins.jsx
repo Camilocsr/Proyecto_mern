@@ -15,25 +15,6 @@ async function getAdmins() {
   }
 }
 
-// async function saveAdmins(productData) {
-//   try {
-//     console.log(productData);
-//     const formData = new FormData();
-
-//     formData.append('nameAdmin', productData.nameAdmin);
-//     formData.append('paswordAdmin', productData.paswordAdmin);
-
-//     const response = await axios({
-//       url: `${baseUrl}/Admins`,
-//       method: 'POST',
-//       data: formData
-//     });
-
-//     // return response;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
 
 async function saveAdmins(productData) {
   try {

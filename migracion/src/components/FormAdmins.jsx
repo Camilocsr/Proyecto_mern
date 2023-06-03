@@ -18,26 +18,50 @@ const FormAddAdmins = ({handleSubmit})=> {
 
   const _handleSubmit = (e)=> {
     e.preventDefault()
-    handleSubmit({...formValues})
+    const nombre = document.getElementById('nombre');
+    const password = document.getElementById('contraseña');
+    const parrafo = document.getElementById('parrafo');
+      let entrar = false;
+      let texto = "";
+      const validarContraseña = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z]).+$/;
+    
+      if (nombre.value.length < 4) {
+        texto = `El nombre debe tener minimo cuatro caracteres.`;
+        entrar = true
+      } else if (!validarContraseña.test(password.value)) {
+        texto = `La contraseña debe tener:<br>
+        1.Al menos una letra minúscula<br>
+        2.Al menos una letra mayúscula,<br>
+        3.Al menos un carácter que no sea una letra,<br>
+        4.Cualquier carácter una o más veces.<br>
+        `;
+        entrar = true;
+      }
+      if (entrar) {
+        parrafo.innerHTML = texto;
+      } else {
+        handleSubmit({...formValues});
+      }
   }
   return(
-    <Form  onSubmit={_handleSubmit}>
+    <Form onSubmit={_handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Nombre</Form.Label>
-        <Form.Control name="nameAdmin" value={formValues.nameAdmin} onChange={handleChange} type="text" />
+        <Form.Control id="nombre" name="nameAdmin" value={formValues.nameAdmin} onChange={handleChange} type="text" />
         <Form.Text className="text-muted">
-          Tipo de producto o nombre referente a ese producto.
+          Nombre de la persona.
         </Form.Text>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Contraseña</Form.Label>
-        <Form.Control name="paswordAdmin"value={formValues.paswordAdmin} onChange={handleChange} type="text"/>
+        <Form.Control id='contraseña' name="paswordAdmin"value={formValues.paswordAdmin} onChange={handleChange} type="text"/>
       </Form.Group>
       <br/>
       <Button variant="primary" type="submit">
-        Submit
+        Enviar.
       </Button>
+      <p id="parrafo"></p>
     </Form>
   )
 }
