@@ -32,9 +32,9 @@ const ProductLayout = () => {
     setIsLoading(false)
   }
   
-  // useEffect(()=>{
-  //   loadProducts();
-  // },[products])
+  useEffect(()=>{
+    loadProducts();
+  },[products])
 
   useEffect(()=>{
     loadProducts()
