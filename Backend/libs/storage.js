@@ -1,6 +1,6 @@
-const multer = require('multer'); // funcion la cual valida si es un archivo tipo imagen, si no lo es nunca llegara a la base de datos.
+const multer = require('multer');// funcion la cual valida si es un archivo tipo imagen, si no lo es nunca llegara a la base de datos.
 
-const storage = multer.diskStorage({
+const storage = multer.diskStorage({ //manejo las imagenes en el servidor...
   destination: function (req, file, cb) {
     cb(null, './storage/imgs');
   },
@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({
+const upload = multer({//proibo cualquier intento al ingresar otra cosa que o sea un tipo de img.
   storage: storage,
   fileFilter: function (req, file, cb) {
     // Validar si el archivo es una imagen

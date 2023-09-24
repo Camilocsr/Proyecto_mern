@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');//Donde lo utilices cambia todo a formato json
 const Admin = require('../models/Admin');
 
 async function addAdmin(req, res) {
@@ -44,7 +44,7 @@ async function authenticateAdmin(req, res) {
     // Comparar la contraseña ingresada encriptada con la contraseña almacenada encriptada
     const passwordMatch = await bcrypt.compare(paswordAdmin, admin.paswordAdmin);
 
-    console.log('Contraseña ingresada por el usuario:', paswordAdmin);
+    // console.log('Contraseña ingresada por el usuario:', paswordAdmin);
     console.log('Contraseña almacenada en la base de datos:', admin.paswordAdmin);
     console.log('¿Coinciden las contraseñas cifradas?', passwordMatch);
 

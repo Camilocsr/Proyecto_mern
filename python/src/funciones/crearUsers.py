@@ -8,7 +8,7 @@ app.config["MONGO_URI"] = "mongodb://localhost:27027/store"
 mongo = PyMongo(app)
 
 
-def create_user():
+def create_user(): #collection para mongo.
     nameAdmin = request.json.get('nameAdmin')
     paswordAdmin = request.json.get('paswordAdmin')
 

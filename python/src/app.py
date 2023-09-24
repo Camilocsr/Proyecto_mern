@@ -1,4 +1,4 @@
-from flask import Flask, request#nos permite crear apps web mucho mas rapido de lo normal.
+from flask import Flask#nos permite crear apps web mucho mas rapido de lo normal.
 from flask_pymongo import PyMongo #driver para conexion
 from funciones.crearUsers import create_user
 
