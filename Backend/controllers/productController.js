@@ -9,7 +9,7 @@ async function addProduct(req,res){
       unitaryPrice,
       description,
       categoria
-    } = req.body 
+    } = req.body
 
     const product = ({
       name,
