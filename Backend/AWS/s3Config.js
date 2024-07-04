@@ -1,6 +1,7 @@
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 const fs = require('fs');
 const fsPromises = require('fs').promises;
+const path = require('path');
 const { AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION, AWS_BUCKET_NAME } = require('../config.js');
 
 const client = new S3Client({
@@ -18,15 +19,21 @@ const uploadFile = async (pathFile) => {
         } catch (error) {
             throw new Error(`El archivo ${pathFile} no existe.`);
         }
+
+        const fileName = path.basename(pathFile);
         const stream = fs.createReadStream(pathFile);
         const command = new PutObjectCommand({
             Bucket: AWS_BUCKET_NAME,
-            Key: pathFile,
+            Key: fileName,
             Body: stream
         });
-        const data = await client.send(command);
+
+        await client.send(command);
         await fsPromises.unlink(pathFile);
-        return data;
+
+        const fileUrl = `https://${AWS_BUCKET_NAME}.s3.${AWS_REGION}.amazonaws.com/${fileName}`;
+        console.log(`URL del archivo en AWSs3: ${fileUrl}`);
+        return fileUrl;
     } catch (error) {
         console.error(`Error al cargar el archivo ${pathFile}:`, error);
         throw error;
