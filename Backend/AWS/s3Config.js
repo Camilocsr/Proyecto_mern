@@ -14,11 +14,7 @@ const client = new S3Client({
 
 const uploadFile = async (pathFile) => {
     try {
-        try {
-            await fsPromises.access(pathFile);
-        } catch (error) {
-            throw new Error(`El archivo ${pathFile} no existe.`);
-        }
+        await fsPromises.access(pathFile);
 
         const fileName = path.basename(pathFile);
         const stream = fs.createReadStream(pathFile);
@@ -28,11 +24,11 @@ const uploadFile = async (pathFile) => {
             Body: stream
         });
 
-        await client.send(command);
+        const data = await client.send(command);
         await fsPromises.unlink(pathFile);
 
         const fileUrl = `https://${AWS_BUCKET_NAME}.s3.${AWS_REGION}.amazonaws.com/${fileName}`;
-        console.log(`URL del archivo en AWSs3: ${fileUrl}`);
+        console.log(`URL del archivo en AWS S3: ${fileUrl}`);
         return fileUrl;
     } catch (error) {
         console.error(`Error al cargar el archivo ${pathFile}:`, error);

@@ -1,6 +1,6 @@
 const Product = require('../models/Product');
-const {host,port} = require('../config');
-const {uploadFile} = require('../AWS/s3Config.js');
+const { host, port } = require('../config');
+const { uploadFile } = require('../AWS/s3Config.js');
 const path = require('path');
 
 async function addProduct(req, res) {
@@ -13,18 +13,21 @@ async function addProduct(req, res) {
       categoria
     } = req.body;
 
+    let imgUrl = null;
+    if (req.file) {
+      const ubicacionIMG = path.join(__dirname, '..', 'storage', 'imgs', req.file.filename);
+      const fileUrl = await uploadFile(ubicacionIMG);
+      imgUrl = fileUrl;
+    }
+
     const product = {
       name,
       size,
       unitaryPrice,
       description,
       categoria,
-      imgUrl: req.file ? `${host}:${port}/public/${req.file.filename}` : null,
+      imgUrl
     };
-
-    const ubicacionIMG = path.join(__dirname, '..', 'storage', 'imgs', req.file.filename);
-
-    await uploadFile(ubicacionIMG);
 
     const productStored = await Product.create(product);
     res.status(200).send({productStored});
