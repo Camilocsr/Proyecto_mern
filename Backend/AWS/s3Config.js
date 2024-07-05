@@ -8,7 +8,7 @@ const client = new S3Client({
     region: AWS_REGION,
     credentials: {
         accessKeyId: AWS_ACCESS_KEY_ID,
-        secretAccessKey: AWS_SECRET_ACCESS_KEY,
+        secretAccessKey: AWS_SECRET_ACCESS_KEY
     }
 });
 
@@ -24,7 +24,7 @@ const uploadFile = async (pathFile) => {
             Body: stream
         });
 
-        const data = await client.send(command);
+        await client.send(command);
         await fsPromises.unlink(pathFile);
 
         const fileUrl = `https://${AWS_BUCKET_NAME}.s3.${AWS_REGION}.amazonaws.com/${fileName}`;
