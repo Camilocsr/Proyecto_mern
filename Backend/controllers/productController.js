@@ -1,7 +1,9 @@
 const Product = require('../models/Product');
-const {host,port} = require('../config');
+const { host, port } = require('../config');
+const { uploadFile } = require('../AWS/s3Config.js');
+const path = require('path');
 
-async function addProduct(req,res){
+async function addProduct(req, res) {
   try {
     const {
       name,
@@ -9,35 +11,32 @@ async function addProduct(req,res){
       unitaryPrice,
       description,
       categoria
-    } = req.body 
+    } = req.body;
 
-    const product = ({
+    let imgUrl = null;
+    if (req.file) {
+      const ubicacionIMG = path.join(__dirname, '..', 'storage', 'imgs', req.file.filename);
+      const fileUrl = await uploadFile(ubicacionIMG);
+      imgUrl = fileUrl;
+    }
+
+    const product = {
       name,
       size,
       unitaryPrice,
       description,
       categoria,
-      imgUrl: req.file ? `${host}:${port}/public/${req.file.filename}` : null, // si el campo de img es bacio ps se pone null
-    }
-    )
+      imgUrl
+    };
 
     const productStored = await Product.create(product);
     res.status(200).send({productStored});
   } catch (error) {
-    res.status(500).send({message:error.message});
+    res.status(500).send({message: error.message});
   }
 }
 
-// async function getProducts (req,res){
-//   try {
-//     const products = await Product.find().lean().exec();
-//     res.status(200).send({products});
-//   } catch (error) {
-//     console.log(`He tenido un problema grabe para mostrarte datos😒🤒`,error)
-//   }
-// }
-
-async function getProducts(req, res) {// trae los datos de la base de datos y tambien tiene un limite por pagina
+async function getProducts(req, res) {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;

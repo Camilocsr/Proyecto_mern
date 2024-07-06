@@ -11,10 +11,9 @@ const storage = multer.diskStorage({ //manejo las imagenes en el servidor...
   },
 });
 
-const upload = multer({//proibo cualquier intento al ingresar otra cosa que o sea un tipo de img.
+const upload = multer({
   storage: storage,
   fileFilter: function (req, file, cb) {
-    // Validar si el archivo es una imagen
     const allowedMimes = ['image/jpeg', 'image/png', 'image/gif'];
     if (allowedMimes.includes(file.mimetype)) {
       cb(null, true);

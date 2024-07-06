@@ -9,9 +9,11 @@
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Juan Camilo Solano Rodriguez.",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.609.0",
+    "aws-sdk": "^2.1654.0",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
