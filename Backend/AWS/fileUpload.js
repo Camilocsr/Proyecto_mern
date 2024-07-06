@@ -1,16 +1,8 @@
-const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
+const { client } = require('./awsConfig');
+const { AWS_BUCKET_NAME,AWS_REGION } = require('../config.js');
 const fs = require('fs');
 const fsPromises = require('fs').promises;
 const path = require('path');
-const { AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION, AWS_BUCKET_NAME } = require('../config.js');
-
-const client = new S3Client({
-    region: AWS_REGION,
-    credentials: {
-        accessKeyId: AWS_ACCESS_KEY_ID,
-        secretAccessKey: AWS_SECRET_ACCESS_KEY
-    }
-});
 
 const uploadFile = async (pathFile) => {
     try {
@@ -18,6 +10,8 @@ const uploadFile = async (pathFile) => {
 
         const fileName = path.basename(pathFile);
         const stream = fs.createReadStream(pathFile);
+        const { PutObjectCommand } = require('@aws-sdk/client-s3');
+
         const command = new PutObjectCommand({
             Bucket: AWS_BUCKET_NAME,
             Key: fileName,
