@@ -1,4 +1,4 @@
-const Product = require('../../models/Product');
+const Product = require('../../models/ProductStock.js');
 
 async function getProducts(req, res) {
     try {
@@ -23,7 +23,7 @@ async function getProducts(req, res) {
             nextPage: endIndex,
             prevPage: startIndex - limit,
         };
-        
+
         res.status(200).send({ products, pagination });
     } catch (error) {
         console.log(`He tenido un problema grabe para mostrarte datos😒🤒`, error);
