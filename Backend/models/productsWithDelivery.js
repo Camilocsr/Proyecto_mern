@@ -1,10 +1,37 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const ProductListSchema = new Schema({
+    tipo: {
+        type: String,
+        required: true,
+    },
+    cantidad: {
+        type: Number,
+        required: true,
+    },
+    talla: {
+        type: String,
+        required: true,
+    },
+    Genero: {
+        type: String,
+        required: true,
+    },
+    ValorUnitario: {
+        type: Number,
+        required: true,
+    },
+    SumaDeLaCantidad: {
+        type: Number,
+        required: true,
+    },
+});
+
 const ProductSchema = new Schema({
     nameClient: {
         type: String,
-        required: true
+        required: true,
     },
     numberContact: {
         type: String,
@@ -26,13 +53,16 @@ const ProductSchema = new Schema({
         type: Number,
         required: true,
     },
-    productsList: [String],
+    productsList: {
+        type: [ProductListSchema],
+        required: true,
+    },
     delivery: {
         type: Boolean,
-        default: false
+        default: false,
     },
 }, {
     timestamps: true
 });
 
-module.exports = mongoose.model('Product', ProductSchema);
+module.exports = mongoose.model('ProductWithDelivery', ProductSchema);
