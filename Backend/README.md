@@ -1,4 +1,4 @@
-# Proyecto MERN con AWS S3
+# Backnd del Proyecto MERN con AWS
 
 Este proyecto utiliza AWS S3 para almacenar archivos de manera pública. Aquí encontrarás las instrucciones necesarias para configurar los permisos de tu bucket S3 y cómo integrarlo en tu aplicación.
 
@@ -61,3 +61,7 @@ Para permitir el manejo de archivos públicos en tu bucket S3, necesitas ajustar
     AWS_REGION=
     AWS_NAME_BUKED_S3=
     ```
+
+
+2. Crea las carpetas
+    - Tienes que estar posicionados e la carpeta principal, en esa carpeta creas el directorio storage y dntro de ella creas el directorio imgs

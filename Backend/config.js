@@ -15,6 +15,15 @@ const config = {
         AWS_SECRET_ACCESS_KEY:process.env.AWS_SECRET_ACCESS_KEY,
         AWS_REGION:process.env.AWS_REGION,
         AWS_BUCKET_NAME:process.env.AWS_NAME_BUKED_S3
+    },
+    googleClaud:{
+        ID_CLIENTE:process.env.ID_CLIENTE,
+        SECRET_CLIENTE:process.env.SECREED_CLIENT,
+        REFRECH_TOKEN:process.env.REFRECH_TOKEN,
+        configuracionEnvioDeCorreo:{
+            CorreoReseptor:process.env.CORREO_RESEPTOR,
+            CorreoEmisor:process.env.CORREO_EMISOR
+        }
     }
 }
 
@@ -28,5 +37,10 @@ module.exports = {
     AWS_ACCESS_KEY_ID:config.aws.AWS_ACCESS_KEY_ID,
     AWS_SECRET_ACCESS_KEY:config.aws.AWS_SECRET_ACCESS_KEY,
     AWS_REGION:config.aws.AWS_REGION,
-    AWS_BUCKET_NAME:config.aws.AWS_BUCKET_NAME
+    AWS_BUCKET_NAME:config.aws.AWS_BUCKET_NAME,
+    ID_CLIENTE:config.googleClaud.ID_CLIENTE,
+    SECRET_CLIENTE:config.googleClaud.SECRET_CLIENTE,
+    REFRECH_TOKEN:config.googleClaud.REFRECH_TOKEN,
+    CorreoEmisormisor:config.googleClaud.configuracionEnvioDeCorreo.CorreoEmisor,
+    CorreoReseptor:config.googleClaud.configuracionEnvioDeCorreo.CorreoReseptor
 };
