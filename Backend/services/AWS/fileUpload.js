@@ -1,5 +1,5 @@
-const { client } = require('./awsConfig');
-const { AWS_BUCKET_NAME,AWS_REGION } = require('../config.js');
+const { client } = require('./awsConfig.js');
+const { AWS_BUCKET_NAME,AWS_REGION } = require('../../config.js');
 const fs = require('fs');
 const fsPromises = require('fs').promises;
 const path = require('path');

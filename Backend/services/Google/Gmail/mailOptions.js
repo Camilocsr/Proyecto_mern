@@ -12,4 +12,4 @@ const enviarCorreoPorGmail = (Emisor, Reseptor, Asunto, Message) => {
 }
 
 
-module.exports = enviarCorreoPorGmail
+module.exports = enviarCorreoPorGmail;

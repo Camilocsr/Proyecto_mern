@@ -1,8 +1,7 @@
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
 const OAuth2 = google.auth.OAuth2;
-
-const { ID_CLIENTE, SECRET_CLIENTE, REFRECH_TOKEN } = require('../../config.js');
+const { ID_CLIENTE, SECRET_CLIENTE, REFRECH_TOKEN,CorreoEmisormisor } = require('../../../config.js');
 
 const oauth2Client = new OAuth2(
     ID_CLIENTE,
@@ -30,7 +29,7 @@ const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         type: 'OAuth2',
-        user: 'esmunred@gmail.com',
+        user: CorreoEmisormisor,
         clientId: ID_CLIENTE,
         clientSecret: SECRET_CLIENTE,
         refreshToken: REFRECH_TOKEN,
