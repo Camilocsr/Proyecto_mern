@@ -1,9 +1,11 @@
-require('dotenv');//variables de entorno.
+require('dotenv');
 const connectDB = require('./db/mongodb')
 const { port, DB,DB_HOST, DB_PORT, DB_NAME } = require('./config');
 const app = require('./app')
 
-async function startServer() {// hago el control de errores con tryCach en una funcion asincrona.(si facha la conexion a db truena todo)
+
+
+async function startServer() {
     try {
       await connectDB(DB,DB_HOST,DB_PORT,DB_NAME);
     

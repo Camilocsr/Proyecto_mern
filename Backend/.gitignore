@@ -1,3 +1,4 @@
 /node_modules
 .env
 storage/imgs/*
+!storage/imgs/.gitkeep
