@@ -1,5 +1,5 @@
 const path = require('path');
-const Product = require('../../models/ProductStock.js');
+const Product = require('../../models/Product.js');
 const { uploadFile } = require('../../services/AWS/fileUpload.js');
 
 async function addProduct(req, res) {
