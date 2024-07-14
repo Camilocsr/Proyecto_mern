@@ -18,6 +18,10 @@ const ProductSchema = Schema({
     type:String,
     required:true
   },
+  color:{
+    type:String,
+    required:true
+  },
   imgUrl:{
     type:String,
     required:true
