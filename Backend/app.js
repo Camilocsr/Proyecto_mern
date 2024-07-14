@@ -4,17 +4,21 @@ const cors = require('cors');
 const productsRoutes = require('./routes/product');
 const adminRoutes = require('./routes/admin');
 const delivery = require('./routes/productsDelvery');
+const clients = require('./routes/clients');
+const orders = require('./routes/order');
 
-app = express();// creo la app express.
+app = express();
 
-app.use(cors());// permitir protocolos http desde apps externas.
+app.use(cors());
 
-app.use(bodyParser.urlencoded({extended:false}));// esto parsea a un objeto js
+app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json())
 
-app.use('/public',express.static(`${__dirname}/storage/imgs`));//direccion falsa la cual le aparecera al cliente.
+app.use('/public',express.static(`${__dirname}/storage/imgs`));
 app.use('/v1',productsRoutes);
 app.use('/v1',adminRoutes);
+app.use('/v1',clients);
 app.use('/v1',delivery);
+app.use('/v1',orders);
 
 module.exports = app;

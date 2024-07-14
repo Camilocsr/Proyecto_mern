@@ -1,5 +1,5 @@
 require('dotenv');
-const connectDB = require('./db/mongodb')
+const connectDB = require('./services/db/mongodb.js')
 const { port, DB,DB_HOST, DB_PORT, DB_NAME } = require('./config');
 const app = require('./app')
 

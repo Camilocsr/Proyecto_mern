@@ -1,4 +1,4 @@
-const Product = require('../../models/ProductStock.js');
+const Product = require('../../models/Product.js');
 
 async function deleteProducts(req, res) {
     try {

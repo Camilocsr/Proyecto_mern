@@ -1,7 +1,7 @@
 const { CorreoEmisormisor, CorreoReseptor } = require('../../../config.js');
-const enviarCorreoPorGmail = require('../../../Google/Gmail/mailOptions.js');
-const mensajeAEnviar = require('../../../Google/Gmail/messageAEnviar.js');
+const enviarCorreoPorGmail = require('../../../services/Google/Gmail/mailOptions.js');
 const productsWithDelivery = require('../../../models/productsWithDelivery.js');
+const mensajeAEnviar = require('../../../services/Google/Gmail/messageAEnviar.js');
 
 async function addProductForDelivery(req, res) {
     const Emisor = CorreoEmisormisor;
@@ -34,6 +34,7 @@ async function addProductForDelivery(req, res) {
         const Message = mensajeAEnviar(nameClient,numberContact,email,address,description,numberProducts,productsList);
         
         enviarCorreoPorGmail(Emisor, Receptor, Asunto, Message);
+        
 
         res.status(200).send({ productStored });
     } catch (error) {
